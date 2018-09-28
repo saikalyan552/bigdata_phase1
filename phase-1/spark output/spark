@@ -1,0 +1,14 @@
+Command to load the text file:
+scala> val lines = sc.textFile("/users/saikalyanvytla/hashtags.txt")
+Command to split and count the values:
+scala> val count=lines.flatMap(_.split(" ")).map(word => (word,1)).reduceByKey(_+_)
+Command to write into a file:
+scala> tools.nsc.io.File("/users/saikalyanvytla/sparkhash.txt").writeAll(count.collect().mkString(","))
+
+Command to load the text file:
+scala> val lines = sc.textFile("/users/saikalyanvytla/urlcollection.txt")
+Command to split and count the values:
+scala> val count=lines.flatMap(_.split(" ")).map(word => (word,1)).reduceByKey(_+_)
+Command to write into a file:
+scala> tools.nsc.io.File("/users/saikalyanvytla/sparkurl.txt").writeAll(count.collect().mkString(","))
+~                        
